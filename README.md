@@ -17,6 +17,7 @@ $coingate->create_order(array(
 	'callback_url'      => 'https://example.com/payments/callback?token=6tCENGUYI62ojkuzDPX7Jg',
 	'cancel_url'        => 'https://example.com/cart',
 	'success_url'       => 'https://example.com/account/orders',
+	'title'				=> 'Order #112',
 	'description'       => 'Apple Iphone 6'
 ));
 
