@@ -68,7 +68,7 @@ class CoingateMerchant {
 
 		$this->success		= $http_status == 200;
 		$this->status_code 	= $http_status;
-		$this->response 	= json_decode($response, true);
+		$this->response 	= $response;
 	}
 
 	private function nonce()
