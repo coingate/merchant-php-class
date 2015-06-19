@@ -21,18 +21,18 @@ $coingate->create_order(array(
 	'description'       => 'Apple Iphone 6'
 ));
 
+echo 'Response HTTP Status: ' . $coingate->status_code . "\n";
+
 if ($coingate->success)
 {
-	echo 'success';
+	echo 'SUCCESS' . "\n";
+	var_dump(json_decode($coingate_service->response));
 }
 else
 {
-	echo 'fail';
+	echo 'FAIL' . "\n";
+	echo $coingate_service->response;
 }
-
-echo $coingate->status_code;
-
-var_dump($coingate->response);
 ```
 
 ### Get Order
@@ -42,19 +42,20 @@ https://developer.coingate.com/page/get-order
 ```
 require_once('coingate_merchant.class.php');
 
-$coingate_service = new CoingateMerchant(array('app_id' => 'YOUR_APP_ID', 'api_key' => 'YOUR_API_KEY', 'api_secret' => 'YOUR_API_SECRET'));
+$coingate_service = new CoingateMerchant(array('app_id' => '6', 'api_key' => 'zLn5q7GuOxNXWoyQ2HpUiY', 'api_secret' => 'Uv7huPCYVcmAR4oX5zIwOSHFT8gbDBpZ'));
 
-$coingate_service->get_order(156);
+$coingate_service->get_order(1087999);
 
-echo 'Response HTTP Status: ' . $coingate->status_code;
+echo 'Response HTTP Status: ' . $coingate_service->status_code . "\n";
 
 if ($coingate_service->success)
 {
-	echo 'success';
-	echo var_dump(json_decode($coingate_service->response));
+	echo 'SUCCESS' . "\n";
+	var_dump(json_decode($coingate_service->response));
 }
 else
 {
-	echo 'fail: ' . $coingate_service->response;
+	echo 'FAIL' . "\n";
+	echo $coingate_service->response;
 }
 ```
