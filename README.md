@@ -42,20 +42,19 @@ https://developer.coingate.com/page/get-order
 ```
 require_once('coingate_merchant.class.php');
 
-$coingate = new CoingateMerchant(array('app_id' => 'YOUR_APP_ID', 'api_key' => 'YOUR_API_KEY', 'api_secret' => 'YOUR_API_SECRET'));
+$coingate_service = new CoingateMerchant(array('app_id' => 'YOUR_APP_ID', 'api_key' => 'YOUR_API_KEY', 'api_secret' => 'YOUR_API_SECRET'));
 
-$coingate->get_order(156);
+$coingate_service->get_order(156);
 
-if ($coingate->success)
+echo 'Response HTTP Status: ' . $coingate->status_code;
+
+if ($coingate_service->success)
 {
 	echo 'success';
+	echo var_dump(json_decode($coingate_service->response));
 }
 else
 {
-	echo 'fail';
+	echo 'fail: ' . $coingate_service->response;
 }
-
-echo $coingate->status_code;
-
-var_dump($coingate->response);
 ```
