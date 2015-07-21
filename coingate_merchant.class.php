@@ -9,22 +9,30 @@
  * @license   MIT
  */
 
+define('CLASS_VERSION', '1.0.2');
+
 class CoingateMerchant {
-    private $app_id     = '';
-    private $api_key    = '';
-    private $api_secret = '';
-    private $mode       = 'sandbox'; // live or sandbox
-    private $version    = 'v1';
-    private $api_url    = '';
+    private $app_id             = '';
+    private $api_key            = '';
+    private $api_secret         = '';
+    private $mode               = 'sandbox'; // live or sandbox
+    private $version            = 'v1';
+    private $api_url            = '';
+    private $user_agent         = '';
+    private $user_agent_origin  = 'CoinGate PHP Merchant Class';
 
     public function __construct($options = array())
     {
         foreach($options as $key => $value)
         {
-            if (in_array($key, array('app_id', 'api_key', 'api_secret', 'mode')))
+            if (in_array($key, array('app_id', 'api_key', 'api_secret', 'mode', 'user_agent')))
             {
                 $this->$key = trim($value);
-            }           
+            }
+
+            if (empty($this->user_agent)) {
+                $this->user_agent = $this->user_agent_origin . ' v' . CLASS_VERSION;
+            }
         }
 
         $this->set_api_url();
@@ -69,6 +77,7 @@ class CoingateMerchant {
 
         curl_setopt_array($curl, $curl_options);
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_USERAGENT, $this->user_agent);
 
         $response       = curl_exec($curl);
         $http_status    = curl_getinfo($curl, CURLINFO_HTTP_CODE);
@@ -82,7 +91,7 @@ class CoingateMerchant {
 
     private function nonce()
     {
-        return phpversion() >= 5 ? str_replace('.', '', ((string) microtime(true))) : time();
+        return time();
     }
 
     private function set_api_url()
