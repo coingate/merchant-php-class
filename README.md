@@ -2,7 +2,7 @@
 
 ### Create Order
 
-https://developer.coingate.com/page/create-order
+https://developer.coingate.com/docs/create-order
 
 ```
 require_once('coingate_merchant.class.php');
@@ -37,7 +37,7 @@ else
 
 ### Get Order
 
-https://developer.coingate.com/page/get-order
+https://developer.coingate.com/docs/get-order
 
 ```
 require_once('coingate_merchant.class.php');
