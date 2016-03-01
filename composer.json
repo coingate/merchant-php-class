@@ -1,0 +1,16 @@
+{
+    "name": "coingate/merchant-php-class",
+    "type": "library",
+    "description": "CoinGate merchant class for PHP",
+    "keywords": ["coingate","bitcoin","merchant"],
+    "homepage": "https://coingate.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "CoinGate",
+            "email": "info@coingate.com",
+            "homepage": "https://coingate.com",
+            "role": "Company"
+        }
+    ]
+}
